@@ -18,7 +18,7 @@ const app = remote.app;
 export default class App extends React.Component {
   render() {
     return (
-      <div id="Layout">
+      <div id="Layout" style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
         <Navbar>
           <NavbarGroup>
             <Button className={Classes.MINIMAL} icon="folder-open" />
@@ -53,6 +53,18 @@ export default class App extends React.Component {
             />
           </NavbarGroup>
         </Navbar>
+        <textarea
+          id="TextField"
+          style={{
+            height: '100%',
+            flexGrow: 1,
+            overflow: 'auto',
+            border: 'none',
+            resize: 'none',
+            outline: 'none',
+          }}
+          onKeyDown={this.onInput}
+        />
       </div>);
   }
 }
