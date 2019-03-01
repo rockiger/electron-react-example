@@ -5,6 +5,35 @@
   <link href="../node_modules/normalize.css/normalize.css" rel="stylesheet" />
   <link href="../node_modules/@blueprintjs/core/lib/css/blueprint.css" rel="stylesheet" />
   <link href="../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css" rel="stylesheet" />
+  
+  <link rel="stylesheet" type="text/css" href="./styles/style.css">
+  <script type="text/javascript"> 
+    let cssUrl = '';
+
+    if (process.platform === 'linux') {
+      const execSync = require('child_process').execSync;
+
+      const theme = execSync('gsettings get org.gnome.desktop.interface gtk-theme').toString().toLowerCase()
+      
+      if (theme.includes('adwaita')) {
+        cssUrl = 'adwaita.css'
+      } else if (theme.includes('arc')) {
+        cssUrl = 'arc.css'
+      } else if (theme.includes('OSC') || theme.includes('mac')) {
+        cssUrl = 'mac.css';
+      } else if (theme.includes('win')) {
+        cssUrl = 'win.css';
+      }
+      
+    } else if (process.platform === 'darwin') {
+        cssUrl = 'mac.css';
+    } else if (process.platform === 'win32') {
+        cssUrl = 'win.css';
+    }
+    if (cssUrl) {
+        document.write('<link rel="stylesheet" type="text/css" href="./styles/'+ cssUrl +'">');
+        }
+  </script>
 </head>
 <body style="overflow: hidden; background-color: rgba(0,0,0,0); margin: 0" >
   <div id="App"></div>
