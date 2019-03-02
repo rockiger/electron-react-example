@@ -1,0 +1,41 @@
+:root {
+    --window_bg: #e7e8eb;
+    --window_fg: hsla(222, 18%, 39%, 0.8);
+    --button_hover_bg: #fdfdfd;
+    --button_hover_border: #D1D3DA;
+    --selected_bg_color: #5294e2;
+    --selected_fg_color: #ffffff;
+}
+
+.bp3-navbar {
+    background-color: var(--window_bg);
+    padding: 0 5px;
+    height: 40px;
+}
+.bp3-navbar-group {
+    height: 40px;
+}
+.bp3-button .bp3-icon {
+    color: var(--window_fg)
+}
+.bp3-button {
+    min-width: 35px;
+    min-height: 30px;
+}
+.bp3-button.bp3-minimal:hover {
+    background-color: var(--button_hover_bg);
+    border: 1px solid var(--button_hover_border);
+}
+.bp3-menu-item { padding: 1px 7px; }
+.bp3-menu-item:hover, .bp3-button.bp3-minimal:active, .bp3-button.bp3-minimal.bp3-active  { 
+    background-color: var(--selected_bg_color); 
+    color: var(--selected_fg_color);
+}
+:focus {
+    outline: none;
+}
+
+#StatusBar {
+    max-height: 38px;
+    padding: 10px;
+}

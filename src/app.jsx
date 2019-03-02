@@ -10,7 +10,6 @@ import {
   Popover,
   Menu,
   MenuItem,
-  Colors,
 } from '@blueprintjs/core';
 
 const showMessageBox = remote.dialog.showMessageBox;
@@ -44,7 +43,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div id="Layout" style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <div id="Layout">
         <Navbar>
           <NavbarGroup>
             <Button className={Classes.MINIMAL} icon="folder-open" />
@@ -79,27 +78,8 @@ export default class App extends React.Component {
             />
           </NavbarGroup>
         </Navbar>
-        <textarea
-          id="TextField"
-          style={{
-            height: '100%',
-            flexGrow: 1,
-            overflow: 'auto',
-            border: 'none',
-            resize: 'none',
-            outline: 'none',
-          }}
-          onKeyDown={this.onInput}
-        />
-        <div
-          id="StatusBar"
-          style={{
-            backgroundColor: Colors.LIGHT_GRAY5,
-            borderTop: `1px solid ${Colors.LIGHT_GRAY1}`,
-            height: '50px',
-            padding: 12,
-          }}
-        >
+        <textarea id="TextField" onKeyDown={this.onInput} />
+        <div id="StatusBar">
           Cursor at row {this.state.statistic.row} column {this.state.statistic.col} - {this.state.statistic.chars} chars in document
         </div>
       </div>);

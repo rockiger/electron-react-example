@@ -1,0 +1,45 @@
+:root {
+    --window_bg: #fffff;
+    --window_fg: #000000;
+    --button_hover_bg: #cce8ff;
+    --button_hover_border: #0078d7;
+    --selected_bg_color: #cce8ff;
+    --selected_fg_color: #000000;
+    --bg_color: #ffffff;
+    --borders: rgba(16, 22, 26, 0.1);
+}
+
+.bp3-navbar {
+    background-color: var(--window_bg);
+    padding: 0 10px;
+    height: 40px;
+    box-shadow: 0 0 0 1px var(--borders);
+}
+.bp3-navbar-group {
+    height: 40px;
+}
+.bp3-button .bp3-icon {
+    color: var(--window_fg)
+}
+.bp3-button {
+    min-width: 35px;
+    min-height: 30px;
+    border-radius: 0;
+}
+.bp3-button.bp3-minimal:hover, .bp3-button.bp3-minimal:active, .bp3-button.bp3-minimal.bp3-active  {
+    background-color: var(--button_hover_bg);
+    border: 1px solid var(--button_hover_border);
+}
+.bp3-menu-item { padding: 1px 7px; }
+.bp3-menu-item:hover, .bp3-button.bp3-minimal:active, .bp3-button.bp3-minimal.bp3-active  { 
+    background-color: var(--selected_bg_color); 
+    color: var(--selected_fg_color);
+}
+:focus {
+    outline: none;
+}
+
+#StatusBar {
+    max-height: 45px;
+    padding: 15px;
+}

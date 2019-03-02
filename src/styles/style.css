@@ -1,0 +1,31 @@
+:root{
+    --fg_color: #5c7080;
+    --text_color: #182026;
+    --bg_color: rgb(245, 248, 250);
+    --borders: rgb(206, 217, 224)
+}
+
+#Layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.bp3-button { cursor: default; }
+
+#TextField {
+    height: 100%;
+    flex-grow: 1;
+    overflow: auto;
+    border: none;
+    resize: none;
+    outline: none;
+}
+
+#StatusBar {
+    background-color: var(--bg_color); 
+    border-top: 1px solid var(--borders);
+    color: var(--text_color);
+    height: 50px;
+    padding: 12px;
+}
