@@ -183,7 +183,7 @@ version 2.1 or later for details.`,
           label: 'Zoom',
           role: 'zoom',
         },
-        {git
+        {
           type: 'separator',
         },
         {
