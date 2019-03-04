@@ -25,7 +25,18 @@ export default class App extends React.Component {
         chars: 0,
       },
     };
+
+    const menu = new remote.Menu();
+    menu.append(new remote.MenuItem({ role: 'cut' }));
+    menu.append(new remote.MenuItem({ role: 'copy' }));
+    menu.append(new remote.MenuItem({ role: 'paste' }));
+    menu.append(new remote.MenuItem({ role: 'delete' }));
+    menu.append(new remote.MenuItem({ type: 'separator' }));
+    menu.append(new remote.MenuItem({ role: 'selectall' }));
+    this.menu = menu;
+
     this.onInput = this.onInput.bind(this);
+    this.onContextMenu = this.onContextMenu.bind(this);
   }
 
   onInput() {
@@ -39,6 +50,11 @@ export default class App extends React.Component {
       col,
       chars: textField.value.length,
     } });
+  }
+
+  onContextMenu(event) {
+    event.preventDefault();
+    this.menu.popup({ window: remote.getCurrentWindow() });
   }
 
   render() {
@@ -78,7 +94,7 @@ export default class App extends React.Component {
             />
           </NavbarGroup>
         </Navbar>
-        <textarea id="TextField" onKeyDown={this.onInput} />
+        <textarea id="TextField" onKeyDown={this.onInput} onContextMenu={this.onContextMenu} />
         <div id="StatusBar">
           Cursor at row {this.state.statistic.row} column {this.state.statistic.col} - {this.state.statistic.chars} chars in document
         </div>
