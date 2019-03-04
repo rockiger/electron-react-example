@@ -40,7 +40,7 @@ const createWindow = async () => {
     buttons: ['Close'],
   });
 
-  const menu = Menu.buildFromTemplate([
+  const menu = [
     {
       label: 'Preferences',
       submenu: [
@@ -107,7 +107,7 @@ const createWindow = async () => {
       ],
     },
     {
-      label: 'Help',
+      role: 'help',
       submenu: [
         {
           label: 'About',
@@ -128,8 +128,73 @@ version 2.1 or later for details.`,
         },
       ],
     },
-  ]);
-  Menu.setApplicationMenu(menu);
+  ];
+
+  if (process.platform !== 'darwin') {
+    const name = app.getName();
+    menu.unshift({
+      label: name,
+      submenu: [
+        {
+          role: 'about',
+        },
+        {
+          type: 'separator',
+        },
+        {
+          role: 'services',
+          submenu: [],
+        },
+        {
+          type: 'separator',
+        },
+        {
+          role: 'hide',
+        },
+        {
+          role: 'hideothers',
+        },
+        {
+          role: 'unhide',
+        },
+        {
+          type: 'separator',
+        },
+        {
+          role: 'quit',
+        },
+      ],
+    });
+
+    menu.splice(2, 0, {
+      role: 'window',
+      submenu: [
+        {
+          label: 'Close',
+          accelerator: 'CmdOrCtrl+W',
+          role: 'close'
+        },
+        {
+          label: 'Minimize',
+          accelerator: 'CmdOrCtrl+M',
+          role: 'minimize'
+        },
+        {
+          label: 'Zoom',
+          role: 'zoom'
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Bring All to Front',
+          role: 'front'
+        }
+      ]
+    })
+  }
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
 };
 
 // This method will be called when Electron has finished
