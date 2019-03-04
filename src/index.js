@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu, dialog } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { enableLiveReload } from 'electron-compile';
 
@@ -33,6 +33,103 @@ const createWindow = async () => {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  const showMessage = message => dialog.showMessageBox({
+    type: 'info',
+    message: `You activated action: "${message}"`,
+    buttons: ['Close'],
+  });
+
+  const menu = Menu.buildFromTemplate([
+    {
+      label: 'Preferences',
+      submenu: [
+        {
+          label: 'Prefer Dark Theme',
+          type: 'checkbox',
+        },
+        {
+          label: 'Hide Titlebar when maximized',
+          type: 'checkbox',
+        },
+        {
+          label: 'Color',
+          submenu: [
+            {
+              label: 'Red',
+              type: 'radio',
+              accelerator: 'CmdOrCtrl+R',
+              click: () => showMessage('Red'),
+            },
+            {
+              label: 'Green',
+              type: 'radio',
+              accelerator: 'CmdOrCtrl+G',
+              click: () => showMessage('Green'),
+            },
+            {
+              label: 'Blue',
+              type: 'radio',
+              accelerator: 'CmdOrCtrl+B',
+              click: () => showMessage('Blue'),
+            },
+          ],
+        },
+        {
+          label: 'Shape',
+          submenu: [
+            {
+              label: 'Square',
+              type: 'radio',
+              accelerator: 'CmdOrCtrl+S',
+              click: () => showMessage('Square'),
+            },
+            {
+              label: 'Rectangle',
+              type: 'radio',
+              accelerator: 'CmdOrCtrl+R',
+              click: () => showMessage('Rectangle'),
+            },
+            {
+              label: 'Oval',
+              type: 'radio',
+              accelerator: 'CmdOrCtrl+O',
+              click: () => showMessage('Oval'),
+            },
+          ],
+        },
+        {
+          label: 'Bold',
+          type: 'checkbox',
+          accelerator: 'CmdOrCtrl+Shift+B',
+          click: () => showMessage('Bold'),
+        },
+      ],
+    },
+    {
+      label: 'Help',
+      submenu: [
+        {
+          label: 'About',
+          accelerator: 'CmdOrCtrl+A',
+          click: () => dialog.showMessageBox({
+            type: 'info',
+            title: 'about',
+            message: `GTK+ Code Demos
+3.22.30
+Running against GTK+ 3.22.30
+Program to demonstrate GTK+ functions.
+(C) 1997-2013 The GTK+ Team
+This program comes with absolutely no warranty.
+See the GNU Lesser General Public License, 
+version 2.1 or later for details.`,
+            buttons: ['Close'],
+          }),
+        },
+      ],
+    },
+  ]);
+  Menu.setApplicationMenu(menu);
 };
 
 // This method will be called when Electron has finished
