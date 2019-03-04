@@ -172,26 +172,26 @@ version 2.1 or later for details.`,
         {
           label: 'Close',
           accelerator: 'CmdOrCtrl+W',
-          role: 'close'
+          role: 'close',
         },
         {
           label: 'Minimize',
           accelerator: 'CmdOrCtrl+M',
-          role: 'minimize'
+          role: 'minimize',
         },
         {
           label: 'Zoom',
-          role: 'zoom'
+          role: 'zoom',
         },
-        {
-          type: 'separator'
+        {git
+          type: 'separator',
         },
         {
           label: 'Bring All to Front',
-          role: 'front'
-        }
-      ]
-    })
+          role: 'front',
+        },
+      ],
+    });
   }
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
