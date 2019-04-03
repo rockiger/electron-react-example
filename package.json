@@ -35,7 +35,13 @@
       "electronWinstallerConfig": {
         "name": "electron_react_example"
       },
-      "electronInstallerDebian": {},
+      "electronInstallerDebian": {
+        "icon": "./icon.svg",
+        "categories": [
+          "Utility"
+        ],
+        "homepage": "https://foo.com"
+      },
       "electronInstallerRedhat": {},
       "github_repository": {
         "owner": "",
