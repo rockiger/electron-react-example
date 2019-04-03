@@ -2,7 +2,7 @@
   "name": "electron-react-example",
   "productName": "electron-react-example",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Rebuild of the gtk3-demo-application with electron",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -24,12 +24,13 @@
           "zip"
         ],
         "linux": [
-          "deb",
-          "rpm"
+          "deb"
         ]
       },
       "electronPackagerConfig": {
-        "packageManager": "yarn"
+        "packageManager": "yarn",
+        "executableName": "electron-react-example",
+        "icon": "./icon.svg"
       },
       "electronWinstallerConfig": {
         "name": "electron_react_example"
