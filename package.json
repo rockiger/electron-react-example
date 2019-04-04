@@ -33,7 +33,8 @@
         "icon": "./icon.svg"
       },
       "electronWinstallerConfig": {
-        "name": "electron_react_example"
+        "name": "electron_react_example",
+		"iconUrl": "./icon.ico"
       },
       "electronInstallerDebian": {
         "icon": "./icon.svg",
